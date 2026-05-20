@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,30 +12,30 @@ export const metadata: Metadata = {
   keywords: ["人格测试", "MBTI", "SBTI", "九型人格", "免费测试", "性格分析"],
   openGraph: { siteName: "蜂巢测试", type: "website", locale: "zh_CN" },
   twitter: { card: "summary_large_image" },
-  other: {
-    "google-adsense-account": "ca-pub-7487473818971469",
-  },
+  verification: { google: "google-site-verification: google3f9140e7a22ef70d.html" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7487473818971469"
-          crossOrigin="anonymous"
-        />
-      <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"LCNALnTMSNRBVZry",ck:"LCNALnTMSNRZry"});</script>
-
-    </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
+        <head>
+          <meta charSet="utf-8" />
+        </head>
         <SiteProvider>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </SiteProvider>
+        <Script
+          src="//sdk.51.la/js-sdk-pro.min.js"
+          strategy="lazyOnload"
+          charSet="UTF-8"
+          id="LA_COLLECT"
+        />
+        <Script id="LA_INIT" strategy="lazyOnload" charSet="UTF-8">
+          {`window.LA=window.LA||[];window.LA.push(['init',{id:'LCNALnTMSNRBVZry',ck:'LCNALnTMSNRBVZry'}]);`}
+        </Script>
       </body>
     </html>
   );
