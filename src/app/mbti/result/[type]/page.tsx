@@ -421,16 +421,18 @@ export default function MBTIResultPage() {
             >
               📋 {t("复制链接", "Copy Link")}
             </button>
-            <a
-              href={`https://service.wechat.com/share?url=${encodeURIComponent(
-                shareUrl
-              )}&title=${encodeURIComponent(shareTitle)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition"
+            <button
+              onClick={() => {
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`;
+                const w = window.open('', '_blank', 'width=420,height=420');
+                if (w) {
+                  w.document.write(`<!DOCTYPE html><html><head><title>${shareTitle}</title><style>body{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:system-ui;background:#f5f5f5}.qr{border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.1)}p{margin-top:16px;color:#666;font-size:14px}</style></head><body><img class="qr" src="${qrUrl}" alt="QR"><p>${isZh ? '微信扫一扫即可分享' : 'Scan with WeChat to share'}</p></body></html>`);
+                }
+              }}
+              className="flex-1 py-2.5 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition text-center"
             >
-              💬 {t("分享微信", "WeChat")}
-            </a>
+              📱 {isZh ? "分享微信" : "Share WeChat"}
+            </button>
             <Link
               href="/mbti/test"
               className="px-4 py-2.5 rounded-xl bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-600 transition shadow-sm"
