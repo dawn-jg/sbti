@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SiteProvider } from "@/lib/site-context";
+import AnalyticsScripts from "@/components/AnalyticsScripts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sbtibee.com"),
@@ -22,15 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta charSet="utf-8" />
       </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
-        <Script
-          src="//sdk.51.la/js-sdk-pro.min.js"
-          strategy="lazyOnload"
-          charSet="utf-8"
-          id="LA_COLLECT"
-        />
-        <Script id="LA_INIT" strategy="lazyOnload" charSet="utf-8">{`
-          window.LA=window.LA||[];window.LA.push(['init',{sdkm:'js-sdk-pro',id:'LCNALnTMSNRBVZry',ck:'LCNALnTMSNRBVZry'}]);
-        `}</Script>
+        <AnalyticsScripts />
         <SiteProvider>
           <Header />
           <main className="flex-1">{children}</main>
