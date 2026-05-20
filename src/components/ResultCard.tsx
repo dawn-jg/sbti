@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { BASE_URL } from "@/lib/utils";
 
 interface ResultCardProps {
@@ -13,8 +15,10 @@ interface ResultCardProps {
 }
 
 export default function ResultCard({ emoji, code, name, tagline, description, details, extra, color = "from-amber-400 to-orange-500", colorHex }: ResultCardProps) {
+  const [showQr, setShowQr] = useState(false);
   const url = typeof window !== "undefined" ? window.location.href : BASE_URL;
   const title = `我的${code} ${name}人格测试结果 - 蜂巢测试`;
+  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;
 
   const copyLink = async () => {
     try {
@@ -66,15 +70,19 @@ export default function ResultCard({ emoji, code, name, tagline, description, de
         <button onClick={copyLink} className="flex-1 py-2.5 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition">
           📋 复制链接
         </button>
-        <a
-          href={`https://service.wechat.com/share?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`}
-          target="_blank"
-          rel="noreferrer"
-          className="flex-1 py-2.5 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition text-center"
-        >
-          💬 分享微信
-        </a>
+        <button onClick={() => setShowQr(!showQr)} className="flex-1 py-2.5 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition">
+          {showQr ? "✕ 关闭" : "💬 分享微信"}
+        </button>
       </div>
+
+      {showQr && (
+        <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 text-center shadow-sm">
+          <img src={qrSrc} alt="二维码" className="w-48 h-48 mx-auto rounded-lg" />
+          <p className="text-xs text-gray-400 mt-3 leading-relaxed">
+            长按或截图保存二维码 → 打开微信扫一扫 → 分享给朋友
+          </p>
+        </div>
+      )}
 
       <p className="text-xs text-center text-gray-300 dark:text-gray-600 mt-6">
         🐝 蜂巢测试 · 帮你找到最真实的自己
