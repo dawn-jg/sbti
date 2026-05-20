@@ -12,30 +12,30 @@ export const metadata: Metadata = {
   keywords: ["人格测试", "MBTI", "SBTI", "九型人格", "免费测试", "性格分析"],
   openGraph: { siteName: "蜂巢测试", type: "website", locale: "zh_CN" },
   twitter: { card: "summary_large_image" },
-  verification: { google: "google-site-verification: google3f9140e7a22ef70d.html" },
+  verification: { google: "google3f9140e7a22ef70d.html" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
-        <head>
-          <meta charSet="utf-8" />
-        </head>
+        <Script
+          src="//sdk.51.la/js-sdk-pro.min.js"
+          strategy="lazyOnload"
+          charSet="utf-8"
+          id="LA_COLLECT"
+        />
+        <Script id="LA_INIT" strategy="lazyOnload" charSet="utf-8">{`
+          window.LA=window.LA||[];window.LA.push(['init',{sdkm:'js-sdk-pro',id:'LCNALnTMSNRBVZry',ck:'LCNALnTMSNRBVZry'}]);
+        `}</Script>
         <SiteProvider>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </SiteProvider>
-        <Script
-          src="//sdk.51.la/js-sdk-pro.min.js"
-          strategy="lazyOnload"
-          charSet="UTF-8"
-          id="LA_COLLECT"
-        />
-        <Script id="LA_INIT" strategy="lazyOnload" charSet="UTF-8">
-          {`window.LA=window.LA||[];window.LA.push(['init',{id:'LCNALnTMSNRBVZry',ck:'LCNALnTMSNRBVZry'}]);`}
-        </Script>
       </body>
     </html>
   );
