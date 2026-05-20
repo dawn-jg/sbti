@@ -25,7 +25,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7487473818971469"
           crossOrigin="anonymous"
         />
-      </head>
+      <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"LCNALnTMSNRBVZry",ck:"LCNALnTMSNRZry"});</script>
+
+    </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
         <SiteProvider>
           <Header />
