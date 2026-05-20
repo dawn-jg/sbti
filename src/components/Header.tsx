@@ -34,8 +34,8 @@ export default function Header() {
   if (!mounted) {
     return (
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-black/5">
-        <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-extrabold text-2xl tracking-tight shrink-0">
+        <div className="max-w-7xl mx-auto px-5 h-18 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 font-extrabold text-3xl tracking-tight shrink-0">
             <span className="text-3xl">🐝</span> 蜂巢测试
           </Link>
           <div className="flex items-center gap-2 ml-3">
@@ -49,12 +49,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-gray-950/70 border-b border-black/5 dark:border-white/5">
-      <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-2xl tracking-tight shrink-0">
+      <div className="max-w-7xl mx-auto px-5 h-18 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 font-extrabold text-3xl tracking-tight shrink-0">
           <span className="text-3xl">🐝</span> 蜂巢测试
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1 text-sm font-bold overflow-x-auto">
+        <nav className="hidden lg:flex items-center gap-1 text-base font-extrabold overflow-x-auto">
           {links.map(l => (
             <Link key={l.href} href={l.href}
               className="px-3 py-2 rounded-lg text-gray-500 dark:text-gray-400 font-bold hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 transition-colors whitespace-nowrap">
@@ -92,10 +92,10 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-gray-100 dark:border-gray-800 bg-white/90 dark:bg-gray-950/90 backdrop-blur px-5 py-3 flex flex-col gap-1 text-sm font-medium">
+        <div className="lg:hidden border-t border-gray-100 dark:border-gray-800 bg-white/90 dark:bg-gray-950/90 backdrop-blur px-5 py-3 flex flex-col gap-1 text-base font-extrabold">
           {links.map(l => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="px-4 py-3 rounded-xl text-base font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
+              className="px-4 py-3 rounded-xl text-lg font-extrabold text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
               {lang === "zh" ? l.labelZh : l.labelEn}
             </Link>
           ))}
