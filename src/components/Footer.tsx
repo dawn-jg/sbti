@@ -15,8 +15,8 @@ export default function Footer() {
           </p>
           <div className="flex justify-center gap-6">
             <div className="text-center">
-              <img src="/donate.jpg" alt="打赏" className="w-36 h-36 rounded-xl shadow-md" />
-              <p className="text-xs text-gray-400 mt-2">微信收款码</p>
+              <img src="/donate.jpg" alt="打赏" className="w-52 h-52 rounded-2xl shadow-lg" />
+              <p className="text-sm text-gray-400 mt-2">微信打赏码 ❤️</p>
             </div>
           </div>
         </div>
