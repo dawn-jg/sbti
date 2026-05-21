@@ -1,98 +1,83 @@
 "use client";
-import { useParams, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { mbtiTypes } from "@/data/mbti";
-import { useSite } from "@/lib/site-context";
 
 export default function MBTIResultPage() {
   const { type } = useParams<{ type: string }>();
-  const router = useRouter();
-  const { lang } = useSite();
-  const isZh = lang === "zh";
   const decoded = decodeURIComponent(String(type));
-  const info = mbtiTypes[decoded];
+  const [qrHref, setQrHref] = useState("");
+  const [showQR, setShowQR] = useState(false);
 
+  useEffect(() => {
+    setQrHref(window.location.href);
+  }, []);
+
+  const info = mbtiTypes[decoded];
   if (!info) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-950 p-6">
-        <div className="text-center">
-          <div className="text-4xl mb-3">🔍</div>
-          <p className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-2">
-            {isZh ? "未找到测试结果" : "Result Not Found"}: {decoded}
-          </p>
-          <button
-            onClick={() => router.push("/mbti")}
-            className="mt-4 px-6 py-3 rounded-xl bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-600 transition"
-          >
-            {isZh ? "重新测试" : "Retake Test"}
-          </button>
-        </div>
+        <div className="text-4xl mb-3">🔍</div>
+        <p className="text-lg font-bold text-gray-700 dark:text-gray-300 mb-2">
+          未找到测试结果：{decoded}
+        </p>
+        <a href="/mbti" className="mt-4 inline-block px-6 py-3 rounded-xl bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-600 transition">
+          重新测试
+        </a>
       </div>
     );
   }
 
-  const categoryLabel = () => {
-    const map: Record<string, string> = {
-      Analyst: isZh ? "分析师" : "Analyst",
-      Diplomat: isZh ? "外交家" : "Diplomat",
-      Sentinel: isZh ? "守护者" : "Sentinel",
-      Explorer: isZh ? "探险家" : "Explorer",
-    };
-    const key = decoded.slice(0, 2);
-    if ("INT".includes(key) || "ENT".includes(key)) return map.Analyst || "Analyst";
-    if ("INF".includes(key) || "ENF".includes(key)) return map.Diplomat || "Diplomat";
-    if ("IST".includes(key) || "EST".includes(key)) return map.Sentinel || "Sentinel";
-    return map.Explorer || "Explorer";
-  };
+  const pct = (v: number) => `${v}%`;
+  const ei = decoded[0] === "E" ? 78 : 22;
+  const sn = decoded[1] === "S" ? 65 : 35;
+  const tf = decoded[2] === "T" ? 71 : 29;
+  const jp = decoded[3] === "J" ? 63 : 37;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-10">
-      <div className="max-w-2xl mx-auto px-4 space-y-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-10 px-4">
+      <div className="max-w-md mx-auto space-y-4">
 
         {/* Hero */}
         <div className="bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl p-6 text-white text-center">
           <div className="text-5xl mb-2">{info.emoji}</div>
           <div className="text-3xl font-black tracking-widest mb-1">{info.code}</div>
-          <div className="text-lg font-bold opacity-90">{isZh ? info.name : info.nameEn}</div>
+          <div className="text-lg font-bold opacity-90">{info.name}</div>
           <div className="text-sm opacity-75 mt-1">{info.nickname}</div>
-          <div className="mt-2 inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-medium">
-            {categoryLabel()}
-          </div>
         </div>
 
         {/* Description */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-          {isZh ? info.description : info.descriptionEn}
+          {info.description}
         </div>
 
         {/* Dimensions */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl p-5">
-          <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
-            {isZh ? "维度分析" : "Dimension Analysis"}
-          </div>
+          <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Dimension Analysis</div>
           <div className="space-y-2 text-sm">
             {[
-              { label: isZh ? "外向/内向" : "Extraversion/Introversion", pct: info.code.includes("E") ? 75 : 25 },
-              { label: isZh ? "实感/直觉" : "Sensing/iNtuition", pct: info.code.charAt(1) === "S" ? 70 : 30 },
-              { label: isZh ? "理性/情感" : "Thinking/Feeling", pct: info.code.charAt(2) === "T" ? 72 : 28 },
-              { label: isZh ? "计划/灵活" : "Judging/Perceiving", pct: info.code.charAt(3) === "J" ? 68 : 32 },
-            ].map((d, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <span className="w-28 shrink-0 text-gray-500 text-xs">{d.label}</span>
+              { label: "外向/内向 E/I", val: ei },
+              { label: "实感/直觉 S/N", val: sn },
+              { label: "理性/情感 T/F", val: tf },
+              { label: "计划/灵活 J/P", val: jp },
+            ].map((d) => (
+              <div key={d.label} className="flex items-center gap-2">
+                <span className="w-28 shrink-0 text-xs text-gray-500">{d.label}</span>
                 <div className="flex-1 h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-indigo-400 rounded-full" style={{ width: `${d.pct}%` }} />
+                  <div className="h-full bg-indigo-400 rounded-full" style={{ width: d.val }} />
                 </div>
-                <span className="text-xs text-gray-400 w-8 text-right">{d.pct}%</span>
+                <span className="text-xs text-gray-400 w-8 text-right">{d.val}%</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Strengths */}
-        {info.strengths && info.strengths.length > 0 && (
+        {info.strengths?.length > 0 && (
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-5">
-            <div className="text-xs font-bold text-green-600 dark:text-green-400 mb-2">{isZh ? "核心优势" : "Strengths"}</div>
+            <div className="text-xs font-bold text-green-600 dark:text-green-400 mb-2">核心优势</div>
             <div className="flex flex-wrap gap-2">
-              {(isZh ? info.strengths : (info.strengthsEn || info.strengths)).map((s: string, i: number) => (
+              {info.strengths.map((s, i) => (
                 <span key={i} className="px-2 py-1 bg-green-50 dark:bg-green-900 text-green-600 dark:text-green-300 text-xs rounded-full">{s}</span>
               ))}
             </div>
@@ -100,11 +85,11 @@ export default function MBTIResultPage() {
         )}
 
         {/* Weaknesses */}
-        {info.weaknesses && info.weaknesses.length > 0 && (
+        {info.weaknesses?.length > 0 && (
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-5">
-            <div className="text-xs font-bold text-amber-600 dark:text-amber-400 mb-2">{isZh ? "需要注意" : "Weaknesses"}</div>
+            <div className="text-xs font-bold text-amber-600 dark:text-amber-400 mb-2">需要注意</div>
             <div className="flex flex-wrap gap-2">
-              {(isZh ? info.weaknesses : (info.weaknessesEn || info.weaknesses)).map((w: string, i: number) => (
+              {info.weaknesses.map((w, i) => (
                 <span key={i} className="px-2 py-1 bg-amber-50 dark:bg-amber-900 text-amber-600 dark:text-amber-300 text-xs rounded-full">{w}</span>
               ))}
             </div>
@@ -112,30 +97,44 @@ export default function MBTIResultPage() {
         )}
 
         {/* Careers */}
-        {info.careers && (
+        {info.careers?.length > 0 && (
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 text-sm">
-            <div className="text-xs font-bold text-gray-400 mb-2">{isZh ? "适合职业" : "Careers"}</div>
+            <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400 mb-2">适合职业</div>
             <div className="flex flex-wrap gap-2">
-              {(isZh ? info.careers : (info.careersEn || info.careers)).map((c: string, i: number) => (
+              {info.careers.map((c, i) => (
                 <span key={i} className="px-2 py-1 bg-indigo-50 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-300 text-xs rounded-full">{c}</span>
               ))}
             </div>
           </div>
         )}
 
+        {/* Share WeChat QR */}
+        <div className="bg-white dark:bg-gray-900 rounded-2xl p-4">
+          <div className="text-xs font-bold text-gray-400 uppercase mb-3">分享结果</div>
+          <button
+            onClick={() => setShowQR(!showQR)}
+            className="w-full py-3 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition">
+            分享到微信
+          </button>
+          {showQR && qrHref && (
+            <div className="mt-3 text-center">
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=180&data=${encodeURIComponent(qrHref)}`}
+                alt="qr"
+                className="mx-auto rounded-lg"
+              />
+              <p className="text-xs text-gray-400 mt-2">截图保存后用微信扫一扫</p>
+            </div>
+          )}
+        </div>
+
         {/* CTA */}
         <div className="flex gap-2">
-          <button
-            onClick={() => router.push("/mbti")}
-            className="flex-1 py-3 rounded-xl bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-600 transition text-center"
-          >
-            🔄 {isZh ? "再测一次" : "Retake Test"}
-          </button>
-          <a
-            href="/"
-            className="flex-1 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center"
-          >
-            🏠 {isZh ? "首页" : "Home"}
+          <a href="/mbti" className="flex-1 py-3 rounded-xl bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-600 transition text-center">
+            🔄 再测一次
+          </a>
+          <a href="/" className="flex-1 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition text-center">
+            🏠 首页
           </a>
         </div>
 
