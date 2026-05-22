@@ -196,6 +196,7 @@ const TEST_VERSIONS = [
     featuresZh: ["快速锁定性格偏好", "四维度快速评估", "适合初次探索"],
     featuresEn: ["Quick type preference lock", "4-dimension rapid assessment", "Great for first-timers"],
     badge: null,
+    path: "/mbti/test",
   },
   {
     emoji: "🎯",
@@ -207,6 +208,7 @@ const TEST_VERSIONS = [
     featuresZh: ["核心人格维度分析", "93题专业量表", "综合评估报告"],
     featuresEn: ["Core personality dimensions", "93-item professional scale", "Comprehensive report"],
     badge: "recommended",
+    path: "/mbti/test-standard",
   },
   {
     emoji: "🔬",
@@ -218,6 +220,7 @@ const TEST_VERSIONS = [
     featuresZh: ["八大认知功能分析", "荣格原型深度解读", "人格发展建议"],
     featuresEn: ["8 cognitive function analysis", "Jungian archetype deep dive", "Growth recommendations"],
     badge: null,
+    path: "/mbti/test-advanced",
   },
   {
     emoji: "🧬",
@@ -229,6 +232,7 @@ const TEST_VERSIONS = [
     featuresZh: ["临床级多维度指标", "200题全面评估", "专业级性格画像"],
     featuresEn: ["Clinical-grade multi-metric", "200-item full assessment", "Professional personality profile"],
     badge: null,
+    path: "/mbti/test-deep",
   },
 ];
 
@@ -363,7 +367,7 @@ export default function MBTIPage() {
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/mbti/test"
+              href="/mbti/test-standard"
               className="inline-flex items-center px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-lg shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200"
             >
               {isZh ? "开始标准测试 (93题)" : "Start Standard Test (93 items)"}
@@ -492,7 +496,7 @@ export default function MBTIPage() {
                 </ul>
 
                 <Link
-                  href="/mbti/test"
+                  href={v.path}
                   className={`mt-6 block text-center py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 ${
                     v.badge === "recommended"
                       ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-500 hover:to-violet-500 shadow-md"
@@ -820,7 +824,7 @@ export default function MBTIPage() {
 
             <div className="mt-8 text-center">
               <Link
-                href="/mbti/test"
+                href="/mbti/test-standard"
                 className="inline-flex items-center px-8 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200"
               >
                 {isZh ? "开始免费测试 →" : "Start Free Test →"}
@@ -879,7 +883,7 @@ export default function MBTIPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/mbti/test"
+              href="/mbti/test-standard"
               className="inline-flex items-center px-10 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-lg shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200"
             >
               {isZh ? "🚀 立即开始测试" : "🚀 Start Test Now"}
