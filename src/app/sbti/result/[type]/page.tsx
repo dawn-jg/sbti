@@ -1,8 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { sbtiTypes } from "@/data/sbti";
 import { useSite } from "@/lib/site-context";
+import ShareButtons from "@/components/ShareButtons";
 
 export default function SBTIResultPage() {
   const { type } = useParams<{ type: string }>();
@@ -10,11 +11,9 @@ export default function SBTIResultPage() {
   const isZh = lang === "zh";
   const decoded = decodeURIComponent(String(type));
   const info = sbtiTypes.find((t) => t.code === decoded);
-  const [qrHref, setQrHref] = useState("");
-  const [showQR, setShowQR] = useState(false);
-
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setQrHref(typeof window !== "undefined" ? window.location.href : "");
+    setMounted(true);
   }, []);
 
   if (!info) {
@@ -70,26 +69,8 @@ export default function SBTIResultPage() {
           </div>
         )}
 
-        {/* Share WeChat */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl p-4">
-          <div className="text-xs font-bold text-gray-400 uppercase mb-3">{isZh ? "分享结果" : "Share Result"}</div>
-          <button
-            onClick={() => setShowQR(!showQR)}
-            className="w-full py-3 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition"
-          >
-            微信分享 {isZh ? "发微信" : "Share to WeChat"}
-          </button>
-          {showQR && qrHref && (
-            <div className="mt-3 text-center">
-              <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=180&data=${encodeURIComponent(qrHref)}`}
-                alt="qr"
-                className="mx-auto rounded-lg"
-              />
-              <p className="text-xs text-gray-400 mt-2">{isZh ? "截图保存后打开微信扫一扫" : "Save screenshot, open WeChat scan"}</p>
-            </div>
-          )}
-        </div>
+        {/* Share Buttons */}
+        <ShareButtons title={`我的${info.code} ${isZh ? info.name : info.nameEn}人格测试结果 - 蜂巢测试`} />
 
         {/* CTA Buttons */}
         <div className="flex gap-2">

@@ -1,16 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { mbtiTypes } from "@/data/mbti";
+import ShareButtons from "@/components/ShareButtons";
 
 export default function MBTIResultPage() {
   const { type } = useParams<{ type: string }>();
   const decoded = decodeURIComponent(String(type));
-  const [qrHref, setQrHref] = useState("");
-  const [showQR, setShowQR] = useState(false);
-
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setQrHref(window.location.href);
+    setMounted(true);
   }, []);
 
   const info = mbtiTypes[decoded];
@@ -108,25 +107,8 @@ export default function MBTIResultPage() {
           </div>
         )}
 
-        {/* Share WeChat QR */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl p-4">
-          <div className="text-xs font-bold text-gray-400 uppercase mb-3">分享结果</div>
-          <button
-            onClick={() => setShowQR(!showQR)}
-            className="w-full py-3 rounded-xl bg-green-500 text-white text-sm font-semibold hover:bg-green-600 transition">
-            分享到微信
-          </button>
-          {showQR && qrHref && (
-            <div className="mt-3 text-center">
-              <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=180&data=${encodeURIComponent(qrHref)}`}
-                alt="qr"
-                className="mx-auto rounded-lg"
-              />
-              <p className="text-xs text-gray-400 mt-2">截图保存后用微信扫一扫</p>
-            </div>
-          )}
-        </div>
+        {/* Share Buttons */}
+        <ShareButtons title={`我的${decoded} ${info.name}人格测试结果 - 蜂巢测试`} />
 
         {/* CTA */}
         <div className="flex gap-2">
