@@ -12,6 +12,8 @@ import { auraTypes } from "@/data/aura";
 const BASE = "https://sbtibee.com";
 const now = new Date();
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
     // Home
