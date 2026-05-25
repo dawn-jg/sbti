@@ -14,7 +14,7 @@ export default function PetSbtiTestPage() {
           {isZh ? "宠物 SBTI" : "Pet SBTI"}
         </h1>
         <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mt-1">
-          {isZh ? "12种动物人格 · 看看你是哪种萌宠" : "12 Animal Types · Find Your Spirit Pet"}
+          {isZh ? "12种动物人格 · 测测你家毛孩子是哪款" : "12 Animal Types · Find Your Pet's Personality"}
         </p>
         <div className="mt-3 flex gap-2 justify-center text-xs font-bold text-gray-400">
           <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "📝 8题" : "📝 8 Questions"}</span>

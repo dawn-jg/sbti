@@ -13,8 +13,8 @@ export default function PetSBTIResultPage() {
   const t = petSbtiTypes.find(p => p.code === code);
   if (!t) return <div className="text-center py-20 text-gray-400">{isZh ? "类型未找到" : "Type not found"}</div>;
   const desc = isZh
-    ? "你的宠物人格：" + t.description + "\n\n🦴 " + t.tagline
-    : "Your pet personality: " + t.descriptionEn + "\n\n🦴 " + t.taglineEn;
+    ? "你家毛孩子的动物人格：" + t.description + "\n\n🦴 " + t.tagline
+    : "Your pet's animal personality: " + t.descriptionEn + "\n\n🦴 " + t.taglineEn;
   return (
     <ResultCard
       emoji={t.emoji} code={t.code} name={isZh ? t.name : t.nameEn} tagline={isZh ? `「${t.tagline}」` : `「${t.taglineEn}」`}

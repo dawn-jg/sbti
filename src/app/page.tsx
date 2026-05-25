@@ -26,9 +26,9 @@ const tests = [
   },
   {
     href: "/pet-sbti", emoji: "🐾", title: "宠物 SBTI", titleEn: "Pet SBTI",
-    subtitle: "12种动物人格 · 萌宠匹配", subtitleEn: "12 Animal Types",
-    desc: "你是金毛暖男还是傲娇猫主子？用宠物人格解读你的社交密码。",
-    descEn: "Are you a golden retriever or a tsundere cat?",
+    subtitle: "12种动物人格 · 测测你家毛孩子", subtitleEn: "12 Animal Personalities",
+    desc: "你家狗子是暖男还是戏精？猫主子是傲娇还是粘人精？帮你读懂宠物的真实性格。",
+    descEn: "Is your dog a sweetheart or a drama queen? Your cat tsundere or clingy? Discover your pet's true personality.",
     gradient: "from-amber-500 to-orange-500", bg: "bg-amber-50", tag: "趣味 🐶", tagEn: "Fun 🐶", questions: 8, types: 12,
   },
   {
