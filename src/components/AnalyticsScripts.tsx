@@ -11,6 +11,9 @@ export default function AnalyticsScripts() {
         strategy="afterInteractive"
         id="ADSENSE"
       />
+      <Script id="ADSENSE_AUTO" strategy="afterInteractive">
+        {`(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-7487473818971469",enable_page_level_ads:true})`}
+      </Script>
       <Script
         src="//sdk.51.la/js-sdk-pro.min.js"
         strategy="afterInteractive"

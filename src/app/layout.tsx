@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,9 +10,25 @@ export const metadata: Metadata = {
   title: { default: "蜂巢测试 | 免费人格测试平台", template: "%s | 蜂巢测试" },
   description: "免费人格测试平台，包含MBTI、SBTI、九型人格等10+测试，完全免费无需注册。",
   keywords: ["人格测试", "MBTI", "SBTI", "九型人格", "免费测试", "性格分析"],
-  openGraph: { siteName: "蜂巢测试", type: "website", locale: "zh_CN" },
-  twitter: { card: "summary_large_image" },
+  openGraph: {
+    siteName: "蜂巢测试",
+    type: "website",
+    locale: "zh_CN",
+    url: "https://sbtibee.com",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "蜂巢测试 | 免费人格测试平台" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.svg"],
+  },
   verification: { google: "google3f9140e7a22ef70d.html" },
+  alternates: {
+    canonical: "https://sbtibee.com",
+    languages: {
+      "zh-CN": "https://sbtibee.com",
+      en: "https://sbtibee.com/en",
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -20,6 +36,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"WebSite","name":"蜂巢测试","url":"https://sbtibee.com","description":"免费人格测试平台，包含MBTI、SBTI、九型人格等10+测试，完全免费无需注册。","inLanguage":["zh-CN","en"],"potentialAction":{"@type":"SearchAction","target":"https://sbtibee.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":"蜂巢测试","url":"https://sbtibee.com","logo":"https://sbtibee.com/favicon.ico","description":"免费人格测试平台"}) }} />
+        {/* hreflang */}
+        <link rel="alternate" href="https://sbtibee.com" hrefLang="zh-CN" />
+        <link rel="alternate" href="https://sbtibee.com/en" hrefLang="en" />
       </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
         <AnalyticsScripts />
@@ -32,3 +54,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+
