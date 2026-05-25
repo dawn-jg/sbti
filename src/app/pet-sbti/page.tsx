@@ -1,5 +1,5 @@
 "use client";
-import { petSbtiQuestions, calculatePetSBTI } from "@/data/pet-sbti";
+import { petSbtiQuestions, petSbtiTypes, calculatePetSBTI } from "@/data/pet-sbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
 
@@ -26,7 +26,7 @@ export default function PetSbtiTestPage() {
         title={isZh ? "宠物SBTI" : "Pet SBTI"}
         emoji="🐾"
         questions={petSbtiQuestions}
-        onCalculate={calculatePetSBTI}
+        onCalculate={(answers) => petSbtiTypes[calculatePetSBTI(answers)]?.code ?? "CAT"}
         resultPath="/pet-sbti/result"
       />
     </div>

@@ -3,19 +3,23 @@
 import { useParams } from "next/navigation";
 import { petSbtiTypes } from "@/data/pet-sbti";
 import ResultCard from "@/components/ResultCard";
-
-
+import { useSite } from "@/lib/site-context";
 
 export default function PetSBTIResultPage() {
+  const { lang } = useSite();
+  const isZh = lang === "zh";
   const params = useParams();
-  const idx = parseInt(decodeURIComponent(String(params.type)));
-  const t = petSbtiTypes[idx];
-  if (!t) return <div className="text-center py-20 text-gray-400">类型未找到</div>;
+  const code = decodeURIComponent(String(params.type));
+  const t = petSbtiTypes.find(p => p.code === code);
+  if (!t) return <div className="text-center py-20 text-gray-400">{isZh ? "类型未找到" : "Type not found"}</div>;
+  const desc = isZh
+    ? "你的宠物人格：" + t.description + "\n\n🦴 " + t.tagline
+    : "Your pet personality: " + t.descriptionEn + "\n\n🦴 " + t.taglineEn;
   return (
     <ResultCard
-      emoji={t.emoji} code={t.code} name={t.name} tagline={`「${t.tagline}」`}
-      description={"你的宠物人格：" + t.description + "\\n\\n🦴 " + t.tagline}
-      details={[{ label: "生活气场", value: t.vibe }]}
+      emoji={t.emoji} code={t.code} name={isZh ? t.name : t.nameEn} tagline={isZh ? `「${t.tagline}」` : `「${t.taglineEn}」`}
+      description={desc}
+      details={[{ label: isZh ? "生活气场" : "Vibe", value: isZh ? t.vibe : t.vibeEn }]}
     />
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { darkTriadQuestions, calculateDarkTriad } from "@/data/dark-triad";
+import { darkTriadQuestions, darkTriadTypes, calculateDarkTriad } from "@/data/dark-triad";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
 
@@ -26,7 +26,7 @@ export default function DarkTriadTestPage() {
         title={isZh ? "暗黑三角·光明三角" : "Dark Triad · Light Triad"}
         emoji="⚖️"
         questions={darkTriadQuestions}
-        onCalculate={calculateDarkTriad}
+        onCalculate={(answers) => darkTriadTypes[calculateDarkTriad(answers)]?.code ?? "FAITH"}
         resultPath="/dark-triad/result"
       />
     </div>

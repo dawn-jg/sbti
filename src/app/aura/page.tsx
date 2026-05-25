@@ -1,5 +1,5 @@
 "use client";
-import { auraQuestions, calculateAura } from "@/data/aura";
+import { auraQuestions, auraTypes, calculateAura } from "@/data/aura";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
 
@@ -26,7 +26,7 @@ export default function AuraTestPage() {
         title={isZh ? "气场颜色测试" : "Aura Color Test"}
         emoji="🌈"
         questions={auraQuestions}
-        onCalculate={calculateAura}
+        onCalculate={(answers) => auraTypes[calculateAura(answers)]?.code ?? "RED"}
         resultPath="/aura/result"
       />
     </div>

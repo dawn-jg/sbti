@@ -3,13 +3,14 @@
 import { useParams } from "next/navigation";
 import { loveLanguageTypes } from "@/data/love-language";
 import ResultCard from "@/components/ResultCard";
-
-
+import { useSite } from "@/lib/site-context";
 
 export default function LoveLangResultPage() {
+  const { lang } = useSite();
+  const isZh = lang === "zh";
   const params = useParams();
   const key = decodeURIComponent(String(params.type));
   const t = loveLanguageTypes[key as keyof typeof loveLanguageTypes];
-  if (!t) return <div className="text-center py-20 text-gray-400">类型未找到</div>;
-  return <ResultCard emoji={t.emoji} code={t.code} name={t.name} tagline={`「${t.tagline}」`} description={t.description} />;
+  if (!t) return <div className="text-center py-20 text-gray-400">{isZh ? "类型未找到" : "Type not found"}</div>;
+  return <ResultCard emoji={t.emoji} code={t.code} name={isZh ? t.name : t.nameEn} tagline={isZh ? `「${t.tagline}」` : `「${t.taglineEn}」`} description={isZh ? t.description : t.descriptionEn} />;
 }

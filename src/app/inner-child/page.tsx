@@ -1,5 +1,5 @@
 "use client";
-import { innerChildQuestions, calculateInnerChild } from "@/data/inner-child";
+import { innerChildQuestions, innerChildTypes, calculateInnerChild } from "@/data/inner-child";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
 
@@ -26,7 +26,7 @@ export default function InnerChildTestPage() {
         title={isZh ? "内在小孩测试" : "Inner Child Test"}
         emoji="🧸"
         questions={innerChildQuestions}
-        onCalculate={calculateInnerChild}
+        onCalculate={(answers) => { const typeKeys = Object.keys(innerChildTypes); return typeKeys[calculateInnerChild(answers)] ?? "WOUNDED"; }}
         resultPath="/inner-child/result"
       />
     </div>

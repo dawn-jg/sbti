@@ -1,5 +1,5 @@
 "use client";
-import { aiVsQuestions, calculateAIVs } from "@/data/ai-vs";
+import { aiVsQuestions, aiVsResultRanges, calculateAIVs } from "@/data/ai-vs";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
 
@@ -26,7 +26,12 @@ export default function AIVsTestPage() {
         title={isZh ? "AI能力对比" : "AI vs Human"}
         emoji="🤖"
         questions={aiVsQuestions}
-        onCalculate={calculateAIVs}
+        onCalculate={(answers) => {
+          const score = calculateAIVs(answers);
+          if (typeof window !== 'undefined') localStorage.setItem('ai-vs-score', String(score));
+          const range = aiVsResultRanges.find(r => score >= r.min && score <= r.max) || aiVsResultRanges[0];
+          return range.label;
+        }}
         resultPath="/ai-vs/result"
       />
     </div>
