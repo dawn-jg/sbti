@@ -62,10 +62,10 @@ export default function Header() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1 text-lg font-black overflow-x-auto">
+        <nav className="hidden lg:flex items-center gap-1 text-sm font-bold overflow-x-auto">
           {links.map(l => (
             <Link key={l.href} href={l.href}
-              className="px-4 py-2.5 rounded-xl text-gray-500 dark:text-gray-400 font-bold hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 transition-colors whitespace-nowrap">
+              className="px-2.5 py-2 rounded-lg text-gray-500 dark:text-gray-400 font-bold hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-200 transition-colors whitespace-nowrap">
               {lang === "zh" ? l.labelZh : l.labelEn}
             </Link>
           ))}
