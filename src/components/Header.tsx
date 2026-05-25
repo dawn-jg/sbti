@@ -35,8 +35,12 @@ export default function Header() {
     return (
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-black/5">
         <div className="max-w-7xl mx-auto px-5 h-18 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-extrabold text-3xl tracking-tight shrink-0">
-            <span className="text-3xl">🐝</span> 蜂巢测试
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <span className="text-4xl">🐝</span>
+            <div className="flex flex-col leading-none">
+              <span className="font-extrabold text-2xl tracking-tight text-gray-900">蜂巢测试</span>
+              <span className="text-xs font-medium text-gray-400 tracking-wider">sbtibee.com</span>
+            </div>
           </Link>
           <div className="flex items-center gap-2 ml-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center text-sm font-extrabold bg-gray-100 text-gray-500">中</div>
@@ -50,8 +54,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-gray-950/70 border-b border-black/5 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-5 h-18 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-3xl tracking-tight shrink-0">
-          <span className="text-3xl">🐝</span> 蜂巢测试
+        <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <span className="text-4xl">🐝</span>
+          <div className="flex flex-col leading-none">
+            <span className="font-extrabold text-2xl tracking-tight text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">蜂巢测试</span>
+            <span className="text-xs font-medium text-gray-400 dark:text-gray-500 tracking-wider">sbtibee.com</span>
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1 text-base font-extrabold overflow-x-auto">
