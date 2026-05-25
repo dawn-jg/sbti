@@ -50,7 +50,7 @@ export default function Footer() {
           <div>
             <div className="text-xs font-semibold text-gray-400 mb-3">其他</div>
             <div className="flex flex-col gap-1.5">
-              {[["/aura","气场颜色"],["/ai-vs","AI对决"],["/types/mbti","MBTI百科"],["/types/enneagram","九型百科"]].map(([h,t]) => (
+              {[["/aura","气场颜色"],["/ai-vs","AI对决"],["/types/mbti","MBTI百科"],["/types/enneagram","九型百科"],["/privacy-policy","隐私政策"]].map(([h,t]) => (
                 <Link key={h} href={h} className="text-xs text-gray-400 hover:text-amber-500 transition">{t}</Link>
               ))}
             </div>
