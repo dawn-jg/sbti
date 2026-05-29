@@ -1,4 +1,5 @@
-"use client";
+"use client"
+;
 import { innerChildQuestions, innerChildTypes, calculateInnerChild } from "@/data/inner-child";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";

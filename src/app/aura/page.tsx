@@ -1,4 +1,5 @@
-"use client";
+"use client"
+;
 import { auraQuestions, auraTypes, calculateAura } from "@/data/aura";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";

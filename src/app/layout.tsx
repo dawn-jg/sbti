@@ -21,13 +21,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/og-image.svg"],
   },
+  icons: [{ rel: "icon", url: "/favicon.svg", type: "image/svg+xml" }],
   verification: { google: "google3f9140e7a22ef70d.html" },
   alternates: {
     canonical: "https://sbtibee.com",
-    languages: {
-      "zh-CN": "https://sbtibee.com",
-      en: "https://sbtibee.com/en",
-    },
   },
 };
 
@@ -40,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"WebSite","name":"蜂巢测试","url":"https://sbtibee.com","description":"免费人格测试平台，包含MBTI、SBTI、九型人格等10+测试，完全免费无需注册。","inLanguage":["zh-CN","en"],"potentialAction":{"@type":"SearchAction","target":"https://sbtibee.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":"蜂巢测试","url":"https://sbtibee.com","logo":"https://sbtibee.com/favicon.ico","description":"免费人格测试平台"}) }} />
         {/* hreflang */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="alternate" href="https://sbtibee.com" hrefLang="zh-CN" />
         <link rel="alternate" href="https://sbtibee.com/en" hrefLang="en" />
       </head>

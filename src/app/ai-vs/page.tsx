@@ -1,4 +1,5 @@
-"use client";
+"use client"
+;
 import { aiVsQuestions, aiVsResultRanges, calculateAIVs } from "@/data/ai-vs";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";

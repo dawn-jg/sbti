@@ -1,4 +1,5 @@
-"use client";
+"use client"
+;
 import { loveLanguageQuestions, calculateLoveLanguage } from "@/data/love-language";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";

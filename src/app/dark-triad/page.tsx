@@ -1,4 +1,5 @@
-"use client";
+"use client"
+;
 import { darkTriadQuestions, darkTriadTypes, calculateDarkTriad } from "@/data/dark-triad";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";

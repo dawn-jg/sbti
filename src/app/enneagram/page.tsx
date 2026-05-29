@@ -1,4 +1,5 @@
-"use client";
+"use client"
+;
 import { enneagramQuestions, calculateEnneagram } from "@/data/enneagram";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
