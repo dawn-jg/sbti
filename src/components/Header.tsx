@@ -43,7 +43,10 @@ export default function Header() {
             </div>
           </Link>
           <div className="flex items-center gap-2 ml-3">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-base font-extrabold bg-gray-100 text-gray-500">中</div>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center gap-1 text-sm font-extrabold bg-gray-100 text-gray-500">
+              <span className="text-lg">🌐</span>
+              <span>EN</span>
+            </div>
             <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl bg-gray-100 text-gray-500">🌙</div>
           </div>
         </div>
@@ -74,11 +77,12 @@ export default function Header() {
         <div className="flex items-center gap-2 ml-3">
           <button
             onClick={toggleLang}
-            className="w-12 h-12 rounded-xl flex items-center justify-center text-base font-extrabold bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+            className="w-12 h-12 rounded-xl flex items-center justify-center gap-1 text-sm font-extrabold bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
             title={lang === "zh" ? "Switch to English" : "切换为中文"}
             type="button"
           >
-            {lang === "zh" ? "中" : "EN"}
+            <span className="text-lg">🌐</span>
+            <span>{lang === "zh" ? "EN" : "中"}</span>
           </button>
 
           <button
