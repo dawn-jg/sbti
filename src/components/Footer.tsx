@@ -42,7 +42,7 @@ export default function Footer() {
           <div>
             <div className="text-xs font-semibold text-gray-400 mb-3">更多测试</div>
             <div className="flex flex-col gap-1.5">
-              {[["/love-language","爱的语言"],["/attachment","依恋风格"],["/inner-child","内在小孩"],["/dark-triad","暗黑三角"]].map(([h,t]) => (
+              {[["/love-language","爱的语言"],["/attachment","依恋风格"],["/inner-child","内在小孩"],["/dark-triad","暗黑三角"],["/aura","气场颜色"],["/ai-vs","AI对决"]].map(([h,t]) => (
                 <Link key={h} href={h} className="text-xs text-gray-400 hover:text-amber-500 transition">{t}</Link>
               ))}
             </div>
@@ -50,7 +50,7 @@ export default function Footer() {
           <div>
             <div className="text-xs font-semibold text-gray-400 mb-3">其他</div>
             <div className="flex flex-col gap-1.5">
-              {[["/aura","气场颜色"],["/ai-vs","AI对决"],["/blog","百科文章"],["/about","关于我们"],["/contact","联系我们"],["/privacy-policy","隐私政策"],["/terms","服务条款"]].map(([h,t]) => (
+              {[["/blog","百科文章"],["/about","关于我们"],["/contact","联系我们"],["/privacy-policy","隐私政策"],["/terms","服务条款"]].map(([h,t]) => (
                 <Link key={h} href={h} className="text-xs text-gray-400 hover:text-amber-500 transition">{t}</Link>
               ))}
             </div>
