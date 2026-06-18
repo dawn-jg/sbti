@@ -3,6 +3,7 @@
 import { attachmentQuestions, calculateAttachment } from "@/data/attachment";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function AttachmentTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function AttachmentTestPage() {
         onCalculate={calculateAttachment}
         resultPath="/attachment/result"
       />
+    <SeoContentSection test="attachment" />
     </div>
   );
 }

@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 // ── Type Data ──────────────────────────────────────────────────────────────
 
@@ -892,6 +893,9 @@ export default function MBTIPage() {
           </div>
         </div>
       </section>
+
+    <SeoContentSection test="mbti" />
+
     </div>
   );
 }

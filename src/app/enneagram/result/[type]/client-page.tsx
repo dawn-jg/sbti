@@ -28,6 +28,21 @@ export default function EnneagramResultPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": isZh ? info.name : (info.nameEn || info.name),
+            "description": isZh ? info.description : (info.descriptionEn || info.description),
+            "about": {
+              "@type": "Thing",
+              "name": "蜂巢测试"
+            }
+          })
+        }}
+      />
       <ResultCard
         emoji={info.emoji} code={info.code} name={isZh ? info.name : info.nameEn} tagline={isZh ? info.nickname : info.nicknameEn}
         description={isZh ? info.description : info.descriptionEn}

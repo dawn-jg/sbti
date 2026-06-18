@@ -3,6 +3,7 @@
 import { aiVsQuestions, aiVsResultRanges, calculateAIVs } from "@/data/ai-vs";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function AIVsTestPage() {
   const { lang } = useSite();
@@ -35,6 +36,7 @@ export default function AIVsTestPage() {
         }}
         resultPath="/ai-vs/result"
       />
+    <SeoContentSection test="ai-vs" />
     </div>
   );
 }

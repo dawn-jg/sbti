@@ -3,6 +3,7 @@
 import { petSbtiQuestions, petSbtiTypes, calculatePetSBTI } from "@/data/pet-sbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function PetSbtiTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function PetSbtiTestPage() {
         onCalculate={(answers) => petSbtiTypes[calculatePetSBTI(answers)]?.code ?? "CAT"}
         resultPath="/pet-sbti/result"
       />
+    <SeoContentSection test="pet-sbti" />
     </div>
   );
 }

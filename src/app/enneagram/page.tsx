@@ -3,6 +3,7 @@
 import { enneagramQuestions, calculateEnneagram } from "@/data/enneagram";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function EnneagramTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function EnneagramTestPage() {
         onCalculate={calculateEnneagram}
         resultPath="/enneagram/result"
       />
+    <SeoContentSection test="enneagram" />
     </div>
   );
 }

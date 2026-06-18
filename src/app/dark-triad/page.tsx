@@ -3,6 +3,7 @@
 import { darkTriadQuestions, darkTriadTypes, calculateDarkTriad } from "@/data/dark-triad";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function DarkTriadTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function DarkTriadTestPage() {
         onCalculate={(answers) => darkTriadTypes[calculateDarkTriad(answers)]?.code ?? "FAITH"}
         resultPath="/dark-triad/result"
       />
+    <SeoContentSection test="dark-triad" />
     </div>
   );
 }

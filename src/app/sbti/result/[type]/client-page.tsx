@@ -40,6 +40,21 @@ export default function SBTIResultPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-10 px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": isZh ? info.name : (info.nameEn || info.name),
+            "description": isZh ? info.description : (info.descriptionEn || info.description),
+            "about": {
+              "@type": "Thing",
+              "name": "蜂巢测试"
+            }
+          })
+        }}
+      />
       <div className="max-w-2xl mx-auto space-y-4">
 
         {/* Hero */}

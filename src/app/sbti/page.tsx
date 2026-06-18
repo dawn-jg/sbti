@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 import { sbtiTypes } from "@/data/sbti";
 
 // ============================================================
@@ -511,6 +512,9 @@ export default function SbtiHome() {
           </p>
         </div>
       </footer>
+
+    <SeoContentSection test="sbti" />
+
     </div>
   );
 }

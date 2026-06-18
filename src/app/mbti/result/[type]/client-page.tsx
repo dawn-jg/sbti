@@ -38,6 +38,21 @@ export default function MBTIResultPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-10 px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": info.name,
+            "description": info.description,
+            "about": {
+              "@type": "Thing",
+              "name": "蜂巢测试"
+            }
+          })
+        }}
+      />
       <div className="max-w-md mx-auto space-y-4">
 
         {/* Hero */}

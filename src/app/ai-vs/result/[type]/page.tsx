@@ -1,5 +1,17 @@
 import { aiVsResultRanges } from "@/data/ai-vs";
 import ClientPage from "./client-page";
+import { Metadata } from "next";
+
+export function generateMetadata({ params }: { params: { type: string } }): Metadata {
+  const t = aiVsResultRanges.find((x: any) => x.label === params.type);
+  if (!t) return { title: "AI对决" };
+  return {
+    title: t.label + " - " + "AI对决 | 蜂巢测试",
+    description: t.description || "",
+  };
+}
+
+
 
 export default function Page() {
   return <ClientPage />;

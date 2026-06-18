@@ -15,6 +15,21 @@ export default function AIVSResultPage() {
   const score = typeof window !== 'undefined' ? parseInt(localStorage.getItem('ai-vs-score') || '50') : 50;
   return (
     <div className="max-w-lg mx-auto px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": isZh ? range.label : (range.labelEn || range.label),
+            "description": isZh ? range.description : (range.descriptionEn || range.description),
+            "about": {
+              "@type": "Thing",
+              "name": "蜂巢测试"
+            }
+          })
+        }}
+      />
       <div className="text-center mb-8">
         <div className="text-6xl mb-3">{range.emoji}</div>
         <h2 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100">{range.label}</h2>

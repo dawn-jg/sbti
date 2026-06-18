@@ -1,5 +1,17 @@
 import { mbtiTypes } from "@/data/mbti";
 import ClientPage from "./client-page";
+import { Metadata } from "next";
+
+export function generateMetadata({ params }: { params: { type: string } }): Metadata {
+  const t = mbtiTypes[params.type];
+  if (!t) return { title: "MBTI十六型人格" };
+  return {
+    title: t.name + " - " + "MBTI十六型人格 | 蜂巢测试",
+    description: t.description || "",
+  };
+}
+
+
 
 export default function Page() {
   return <ClientPage />;

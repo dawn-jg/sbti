@@ -3,6 +3,7 @@
 import { innerChildQuestions, innerChildTypes, calculateInnerChild } from "@/data/inner-child";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function InnerChildTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function InnerChildTestPage() {
         onCalculate={(answers) => { const typeKeys = Object.keys(innerChildTypes); return typeKeys[calculateInnerChild(answers)] ?? "WOUNDED"; }}
         resultPath="/inner-child/result"
       />
+    <SeoContentSection test="inner-child" />
     </div>
   );
 }

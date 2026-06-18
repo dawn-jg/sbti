@@ -3,6 +3,7 @@
 import { auraQuestions, auraTypes, calculateAura } from "@/data/aura";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function AuraTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function AuraTestPage() {
         onCalculate={(answers) => auraTypes[calculateAura(answers)]?.code ?? "RED"}
         resultPath="/aura/result"
       />
+    <SeoContentSection test="aura" />
     </div>
   );
 }

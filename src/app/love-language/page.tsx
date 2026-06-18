@@ -3,6 +3,7 @@
 import { loveLanguageQuestions, calculateLoveLanguage } from "@/data/love-language";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import SeoContentSection from "@/components/SeoContentSection";
 
 export default function LoveLanguageTestPage() {
   const { lang } = useSite();
@@ -30,6 +31,7 @@ export default function LoveLanguageTestPage() {
         onCalculate={calculateLoveLanguage}
         resultPath="/love-language/result"
       />
+    <SeoContentSection test="love-language" />
     </div>
   );
 }
