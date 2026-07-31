@@ -105,6 +105,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Platform Introduction Section */}
+      <section className="max-w-4xl mx-auto px-5 pb-16">
+        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl p-8 md:p-10 shadow-sm">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 text-center">
+            {isZh ? "为什么选择蜂巢测试？" : "Why BeeTest?"}
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-center mb-8 leading-relaxed max-w-2xl mx-auto">
+            {isZh
+              ? "蜂巢测试是一个基于心理学的免费人格测试平台。我们不收集个人数据、不需要注册、支持中英双语。以下是我们与其他测试平台的不同之处。"
+              : "BeeTest is a psychology-based free personality testing platform. No data collection, no registration, bilingual support. Here&apos;s what sets us apart."}
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="flex gap-4">
+              <div className="text-2xl shrink-0">📚</div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                  {isZh ? "科学理论基础" : "Scientific Foundation"}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                  {isZh
+                    ? "我们的测试基于荣格心理类型理论、Myers-Briggs 类型指标、Bowlby 依恋理论、Gary Chapman 爱的语言等经典心理学框架。每个测试都有明确的学术来源和理论背景。"
+                    : "Our tests are based on Jung&apos;s psychological types, Myers-Briggs Type Indicator, Bowlby&apos;s attachment theory, Gary Chapman&apos;s love languages, and other established psychological frameworks with clear academic provenance."}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-2xl shrink-0">🔒</div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                  {isZh ? "隐私优先" : "Privacy First"}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                  {isZh
+                    ? "所有计算在你的设备上完成，我们不存储任何答题数据。不需要注册账号，没有第三方追踪器收集你的个人信息。你的测试结果只有你自己能看到。"
+                    : "All calculations happen on your device. We store zero answer data. No account needed, no third-party trackers collecting your info. Your results stay with you."}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-2xl shrink-0">🧩</div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                  {isZh ? "全面覆盖" : "Comprehensive Coverage"}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                  {isZh
+                    ? "10 种测试覆盖 96+ 种人格类型，从经典的 MBTI、九型人格到流行的 SBTI、气场颜色。MBTI 还提供 32/93/144/200 四种题库版本，适合不同深度需求。"
+                    : "10 tests covering 96+ personality types, from classic MBTI and Enneagram to trendy SBTI and Aura Colors. MBTI offers 4 question bank versions (32/93/144/200 questions) for different depth needs."}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-2xl shrink-0">🎁</div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
+                  {isZh ? "永久免费" : "Free Forever"}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                  {isZh
+                    ? "所有测试永久免费开放。我们通过广告维持运营，绝不会向用户收费。我们的使命是让心理学测试触手可及，而不是制造付费墙。"
+                    : "All tests are free forever. We sustain through ads, never charging users. Our mission is making psychological testing accessible to everyone, not building paywalls."}
+                </p>
+              </div>
+            </div>
+          </div>
+          <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-8">
+            {isZh
+              ? "已有超过 10 万用户通过蜂巢测试更好地了解自己。现在开始你的第一次测试吧。"
+              : "Over 100K users have gained self-insight through BeeTest. Start your first test now."}
+          </p>
+        </div>
+      </section>
+
       <section className="max-w-6xl mx-auto px-5 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {tests.map((t, i) => (
