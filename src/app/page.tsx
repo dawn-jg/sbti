@@ -1,6 +1,7 @@
 "use client";
 import TestCard from "@/components/TestCard";
 import { useSite } from "@/lib/site-context";
+import { blogPosts } from "@/data/blog";
 
 const tests = [
   {
@@ -189,6 +190,45 @@ export default function Home() {
               gradient={t.gradient} bg={t.bg}
               tag={isZh ? t.tag : t.tagEn}
               questions={t.questions} types={t.types} />
+          ))}
+        </div>
+      </section>
+
+      {/* Latest Articles Section */}
+      <section className="max-w-6xl mx-auto px-5 pb-20">
+        <div className="flex items-end justify-between mb-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100">
+              {isZh ? "📖 最新文章" : "📖 Latest Articles"}
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-1 text-sm">
+              {isZh ? "人格心理学的深度解读与自我成长指南" : "Deep dives into personality psychology & self-growth"}
+            </p>
+          </div>
+          <a href="/blog" className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline shrink-0">
+            {isZh ? "查看全部 →" : "View All →"}
+          </a>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {blogPosts.slice(-3).reverse().map((post) => (
+            <a
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group block rounded-2xl border border-gray-200 dark:border-gray-800 p-6 hover:shadow-md transition-shadow bg-white dark:bg-gray-900"
+            >
+              <span className="text-3xl mb-3 block">{post.emoji}</span>
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 transition-colors mb-2 line-clamp-2">
+                {post.titleZh}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-4">
+                {post.excerptZh}
+              </p>
+              <div className="flex items-center gap-2 text-xs text-gray-400">
+                <span>{post.date}</span>
+                <span>·</span>
+                <span>{post.readMin} {isZh ? "分钟阅读" : "min read"}</span>
+              </div>
+            </a>
           ))}
         </div>
       </section>
