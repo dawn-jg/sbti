@@ -97,6 +97,7 @@ export default function Footer() {
             <div className="flex flex-col gap-1.5">
               {[
                 ["/blog", "百科文章", "Articles"],
+                ["/methodology", "测试科学性", "Methodology"],
                 ["/about", "关于我们", "About"],
                 ["/contact", "联系我们", "Contact"],
                 ["/privacy-policy", "隐私政策", "Privacy"],

@@ -32,6 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/dark-triad`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/aura`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/ai-vs`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/methodology`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/privacy-policy`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/terms`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
 
     // Type gallery pages
     { url: `${BASE}/types/mbti`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
