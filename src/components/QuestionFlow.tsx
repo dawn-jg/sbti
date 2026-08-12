@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSite } from "@/lib/site-context";
 
@@ -25,8 +25,34 @@ export default function QuestionFlow({ title, emoji, questions, resultPath, onCa
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [done, setDone] = useState(false);
+  const [progressKey] = useState(() =>
+    typeof window !== "undefined" ? `qflow_${resultPath.replace(/\//g, "_")}` : ""
+  );
   const [resultKey, setResultKey] = useState<string>("");
   const total = questions.length;
+
+  // Restore saved progress on mount
+  useEffect(() => {
+    if (!progressKey) return;
+    try {
+      const saved = localStorage.getItem(progressKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed.answers === "object" && typeof parsed.current === "number" && parsed.current > 0 && parsed.current < total) {
+          setAnswers(parsed.answers);
+          setCurrent(parsed.current);
+        }
+      }
+    } catch { /* ignore */ }
+  }, [progressKey, total]);
+
+  // Persist progress on change
+  useEffect(() => {
+    if (!progressKey || done || current === 0) return;
+    try {
+      localStorage.setItem(progressKey, JSON.stringify({ answers, current }));
+    } catch { /* ignore */ }
+  }, [answers, current, done, progressKey]);
   const q = questions[current];
 
   const handleAnswer = useCallback((optIdx: number) => {
@@ -36,6 +62,7 @@ export default function QuestionFlow({ title, emoji, questions, resultPath, onCa
       setTimeout(() => setCurrent(c => c + 1), 300);
     } else {
       setDone(true);
+      try { localStorage.removeItem(progressKey); } catch { /* ignore */ }
       const raw = onCalculate(next);
       const keyStr = String(raw);
       setResultKey(keyStr);
