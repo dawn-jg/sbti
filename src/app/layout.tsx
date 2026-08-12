@@ -7,7 +7,7 @@ import AnalyticsScripts from "@/components/AnalyticsScripts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sbtibee.com"),
-  title: { default: "蜂巢测试 | 免费人格测试平台", template: "%s | 蜂巢测试" },
+  title: { default: "蜂巢测试 - MBTI、SBTI、九型人格等10+免费人格测试", template: "%s | 蜂巢测试" },
   description: "蜂巢测试：免费人格测试平台，含MBTI、SBTI、九型人格等10+专业测试。无需注册，测完即出结果，附完整类型解读。来测一测你的性格类型吧！",
   keywords: ["人格测试", "MBTI", "SBTI", "九型人格", "免费测试", "性格分析"],
   openGraph: {

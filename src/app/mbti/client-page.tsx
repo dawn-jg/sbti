@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useSite } from "@/lib/site-context";
 import SeoContentSection from "@/components/SeoContentSection";
+import { blogPosts } from "@/data/blog";
 
 // ── Type Data ──────────────────────────────────────────────────────────────
 
@@ -953,6 +954,43 @@ export default function ClientPage() {
           </div>
         </div>
       </section>
+
+    {/* ── Type Deep-Dive Articles (topic cluster) ─────────────────── */}
+    <section className="max-w-4xl mx-auto px-4 py-12">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-gray-100">
+          {isZh ? "了解你的类型" : "Explore Your Type"}
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm sm:text-base">
+          {isZh
+            ? "深度解读最受欢迎的 MBTI 类型，理解你的认知偏好与成长路径"
+            : "In-depth guides to the most popular MBTI types"}
+        </p>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {(() => {
+          const guides = blogPosts.filter((p) =>
+            ["intj-personality-guide", "infp-personality-guide", "enfp-personality-guide", "isfj-personality-guide", "entp-personality-guide"].includes(p.slug)
+          );
+          return guides.map((g) => (
+            <Link
+              key={g.slug}
+              href={`/blog/${g.slug}`}
+              className="group block p-5 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 hover:shadow-lg transition-all"
+            >
+              <span className="text-3xl">{g.emoji}</span>
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mt-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                {g.titleZh}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 line-clamp-3">{g.excerptZh}</p>
+              <span className="inline-block mt-3 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                {isZh ? "阅读全文 →" : "Read more →"}
+              </span>
+            </Link>
+          ));
+        })()}
+      </div>
+    </section>
 
     <SeoContentSection test="mbti" />
 

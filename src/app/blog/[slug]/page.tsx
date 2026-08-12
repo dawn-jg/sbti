@@ -58,6 +58,30 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           免费测试 {post.testLabel}
         </Link>
       </div>
+
+      {/* Related posts - topic cluster interlinking */}
+      {(() => {
+        const related = blogPosts.filter((p) => p.slug !== post.slug && p.testLink === post.testLink);
+        if (related.length === 0) return null;
+        return (
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">相关阅读</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/blog/${r.slug}`}
+                  className="block p-4 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors"
+                >
+                  <span className="text-2xl mr-2">{r.emoji}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100 text-sm">{r.titleZh}</span>
+                  <p className="text-xs text-gray-400 mt-1 line-clamp-2">{r.excerptZh}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
     </article>
   );
 }

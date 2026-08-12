@@ -8,6 +8,7 @@ import { attachmentTypes } from "@/data/attachment";
 import { innerChildTypes } from "@/data/inner-child";
 import { darkTriadTypes } from "@/data/dark-triad";
 import { auraTypes } from "@/data/aura";
+import { blogPosts } from "@/data/blog";
 
 const BASE = "https://sbtibee.com";
 const now = new Date();
@@ -83,6 +84,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   auraTypes.forEach((_, i) => {
     entries.push({ url: `${BASE}/aura/result/${i}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 });
   });
+
+  // Blog posts (weekly updated)
+  blogPosts.forEach((p) => {
+    entries.push({ url: `${BASE}/blog/${p.slug}`, lastModified: new Date(p.date), changeFrequency: "monthly", priority: 0.6 });
+  });
+
+  // Blog index
+  entries.push({ url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 });
 
   return entries;
 }
