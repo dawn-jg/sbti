@@ -1,37 +1,19 @@
-"use client"
-;
-import { enneagramQuestions, calculateEnneagram } from "@/data/enneagram";
-import QuestionFlow from "@/components/QuestionFlow";
-import { useSite } from "@/lib/site-context";
-import SeoContentSection from "@/components/SeoContentSection";
+import type { Metadata } from "next";
+import ClientPage from "./client-page";
 
-export default function EnneagramTestPage() {
-  const { lang } = useSite();
-  const isZh = lang === "zh";
+export const metadata: Metadata = {
+  title: "九型人格测试 - 免费在线测试你的性格类型",
+  description: "免费九型人格在线测试，共18题约5-8分钟。测出你的9型性格类型，附完整类型解读与核心动机分析。无需注册，完全免费，测完即出结果。",
+  openGraph: {
+    title: "九型人格测试 - 免费在线测试你的性格类型",
+    description: "免费九型人格在线测试，共18题约5-8分钟。测出你的9型性格类型，附完整类型解读与核心动机分析。无需注册，完全免费，测完即出结果。",
+    url: "https://sbtibee.com/enneagram",
+  },
+  alternates: {
+    canonical: "https://sbtibee.com/enneagram",
+  },
+};
 
-  return (
-        <div className="max-w-4xl mx-auto px-4">
-      <div className="pt-12 pb-4 text-center">
-        <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
-          {isZh ? "九型人格测试" : "Enneagram Test"}
-        </h1>
-        <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mt-1">
-          {isZh ? "18题 · 9种性格类型 · 深入了解你的核心动机" : "18 Questions · 9 Types · Core Motivation"}
-        </p>
-        <div className="mt-3 flex gap-2 justify-center text-xs font-bold text-gray-400">
-          <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "📝 18题" : "📝 18 Questions"}</span>
-          <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "🧭 9种类型" : "🧭 9 Types"}</span>
-          <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "⏱ 5-8分钟" : "⏱ 5-8 min"}</span>
-        </div>
-      </div>
-      <QuestionFlow
-        title={isZh ? "九型人格测试" : "Enneagram Test"}
-        emoji="🔮"
-        questions={enneagramQuestions}
-        onCalculate={calculateEnneagram}
-        resultPath="/enneagram/result"
-      />
-    <SeoContentSection test="enneagram" />
-    </div>
-  );
+export default function Page() {
+  return <ClientPage />;
 }

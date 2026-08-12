@@ -145,6 +145,18 @@ export default function SeoContentSection({ test }: { test: string }) {
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 text-base">{item.p}</p>
         </div>
       ))}
+
+      {/* Scientific disclaimer - E-E-A-T trust signal */}
+      <div className="mt-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-5 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+        <h2 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2">
+          {lang === "en" ? "Disclaimer" : "免责声明"}
+        </h2>
+        <p>
+          {lang === "en"
+            ? "This test is for entertainment and self-reflection purposes only. It is not a clinical diagnostic tool and does not replace professional psychological assessment or advice. Results are based on your self-reported answers and should not be used to make major life decisions."
+            : "本测试仅供娱乐与自我参考，不构成临床诊断，也不能替代专业心理咨询或评估。测试结果基于你的自我报告答案，请勿以此作为重大人生决策的依据。如果你正经历心理困扰，建议寻求专业心理咨询师的帮助。"}
+        </p>
+      </div>
     </section>
   );
 }

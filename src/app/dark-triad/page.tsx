@@ -1,37 +1,19 @@
-"use client"
-;
-import { darkTriadQuestions, darkTriadTypes, calculateDarkTriad } from "@/data/dark-triad";
-import QuestionFlow from "@/components/QuestionFlow";
-import { useSite } from "@/lib/site-context";
-import SeoContentSection from "@/components/SeoContentSection";
+import type { Metadata } from "next";
+import ClientPage from "./client-page";
 
-export default function DarkTriadTestPage() {
-  const { lang } = useSite();
-  const isZh = lang === "zh";
+export const metadata: Metadata = {
+  title: "暗黑三角测试 - 免费在线测暗黑人格特质",
+  description: "免费暗黑三角在线测试，共15题约5分钟。测出你的暗黑/光明人格特质（自恋、马基雅维利、精神病态），附专业解读。无需注册，完全免费。",
+  openGraph: {
+    title: "暗黑三角测试 - 免费在线测暗黑人格特质",
+    description: "免费暗黑三角在线测试，共15题约5分钟。测出你的暗黑/光明人格特质（自恋、马基雅维利、精神病态），附专业解读。无需注册，完全免费。",
+    url: "https://sbtibee.com/dark-triad",
+  },
+  alternates: {
+    canonical: "https://sbtibee.com/dark-triad",
+  },
+};
 
-  return (
-        <div className="max-w-4xl mx-auto px-4">
-      <div className="pt-12 pb-4 text-center">
-        <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
-          {isZh ? "暗黑三角·光明三角" : "Dark Triad · Light Triad"}
-        </h1>
-        <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mt-1">
-          {isZh ? "6种人格面向 · 探索人性的阴暗与光明面" : "6 Facets · Dark & Light Personality"}
-        </p>
-        <div className="mt-3 flex gap-2 justify-center text-xs font-bold text-gray-400">
-          <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "📝 15题" : "📝 15 Questions"}</span>
-          <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "🧭 6种类型" : "🧭 6 Types"}</span>
-          <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">{isZh ? "⏱ 6-8分钟" : "⏱ 6-8 min"}</span>
-        </div>
-      </div>
-      <QuestionFlow
-        title={isZh ? "暗黑三角·光明三角" : "Dark Triad · Light Triad"}
-        emoji="⚖️"
-        questions={darkTriadQuestions}
-        onCalculate={(answers) => darkTriadTypes[calculateDarkTriad(answers)]?.code ?? "FAITH"}
-        resultPath="/dark-triad/result"
-      />
-    <SeoContentSection test="dark-triad" />
-    </div>
-  );
+export default function Page() {
+  return <ClientPage />;
 }
