@@ -10,6 +10,60 @@ export default function ClientPage() {
 
   return (
         <div className="max-w-4xl mx-auto px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "AI能力对比测试",
+            "description": "免费AI能力对比测试，10题测出你的人机思维指数。",
+            "url": "https://sbtibee.com/ai-vs",
+            "about": { "@type": "Thing", "name": "Human vs AI Thinking" }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "AI能力对比测试是什么？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "通过10道思维偏好题，测出你的思维更接近人类直觉派还是AI算法派，得分0-100。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测试结果代表什么？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "得分反映你的思维风格偏向：接近人类直觉还是接近AI逻辑。纯趣味性测试，仅供参考。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测试免费吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全免费，无需注册，10题约3分钟，测完即出结果。"
+                  }
+                }
+            ]
+          })
+        }}
+      />
+
+      
+      
+
+      
+
       <div className="pt-12 pb-4 text-center">
         <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
           {isZh ? "AI 能力对比" : "AI vs Human Test"}

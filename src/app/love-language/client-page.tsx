@@ -10,6 +10,60 @@ export default function ClientPage() {
 
   return (
         <div className="max-w-4xl mx-auto px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "爱的五种语言测试",
+            "description": "免费爱的五种语言测试，10题测出你的主要爱语。",
+            "url": "https://sbtibee.com/love-language",
+            "about": { "@type": "Thing", "name": "Five Love Languages" }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "爱的五种语言是什么？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Gary Chapman提出的5种表达爱的方式：肯定的言词、精心的时刻、接受礼物、服务的行动、身体的接触。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "为什么要测爱的语言？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "了解自己和伴侣的主要爱语，能减少关系中的误解与错位，让爱真正被接收到。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测试免费吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全免费，无需注册，10题约3分钟，测完即出结果。"
+                  }
+                }
+            ]
+          })
+        }}
+      />
+
+      
+      
+
+      
+
       <div className="pt-12 pb-4 text-center">
         <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
           {isZh ? "爱的五种语言" : "Love Language"}

@@ -10,6 +10,60 @@ export default function ClientPage() {
 
   return (
         <div className="max-w-4xl mx-auto px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "依恋风格测试",
+            "description": "免费依恋风格测试，12题测出你的依恋类型。",
+            "url": "https://sbtibee.com/attachment",
+            "about": { "@type": "Thing", "name": "Adult Attachment Styles" }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "依恋风格有哪几种？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "成人依恋主要分为4种：安全型、焦虑型、回避型和混乱型，源自童年与主要照顾者的互动模式。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "依恋风格可以改变吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以。了解自己的依恋模式是改变的第一步，通过安全的关系体验和自我觉察，依恋风格可以趋于安全。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测试免费吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全免费，无需注册，12题约4分钟，附关系模式解读与改善建议。"
+                  }
+                }
+            ]
+          })
+        }}
+      />
+
+      
+      
+
+      
+
       <div className="pt-12 pb-4 text-center">
         <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
           {isZh ? "依恋风格测试" : "Attachment Style"}

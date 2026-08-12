@@ -10,6 +10,60 @@ export default function ClientPage() {
 
   return (
         <div className="max-w-4xl mx-auto px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "气场颜色测试",
+            "description": "免费气场颜色测试，10题测出你的气场颜色。",
+            "url": "https://sbtibee.com/aura",
+            "about": { "@type": "Thing", "name": "Aura Colors" }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "气场颜色是什么？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "气场颜色是灵性文化中描述个人能量频率的7种颜色（红橙黄绿蓝靛紫），每种对应不同的性格特质。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "气场颜色会变吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "气场颜色反映当下的能量状态，会随情绪、生活阶段而变化，测试反映你当前的主导气场。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测试免费吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全免费，无需注册，10题约3分钟，附能量类型与脉轮解读。"
+                  }
+                }
+            ]
+          })
+        }}
+      />
+
+      
+      
+
+      
+
       <div className="pt-12 pb-4 text-center">
         <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
           {isZh ? "气场颜色测试" : "Aura Color Test"}

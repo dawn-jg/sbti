@@ -323,6 +323,67 @@ export default function ClientPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "MBTI人格测试",
+            "description": "免费MBTI人格测试在线测试，提供32/93/144/200四档题库。测出你的16型人格类型。",
+            "url": "https://sbtibee.com/mbti",
+            "about": {
+              "@type": "Thing",
+              "name": "MBTI Personality Types"
+            },
+            "educationalLevel": "beginner",
+            "assesses": "Personality type based on Jungian cognitive functions"
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "MBTI测试准吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MBTI基于荣格心理类型理论，是应用最广泛的人格分类工具之一。它的价值在于提供自我认知框架，但测试结果仅供参考，不能替代专业心理评估。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "MBTI测试免费吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "蜂巢测试的MBTI人格测试完全免费，无需注册，提供32/93/144/200四档题库，测完即出结果。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "MBTI有多少种类型？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MBTI共有16种人格类型，由4个维度（外向E/内向I、感觉S/直觉N、思考T/情感F、判断J/知觉P）组合而成。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "INTJ适合什么职业？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "INTJ（建筑师型）通常适合需要战略思维和长期规划的职业，如科学家、工程师、战略分析师、产品经理等。"
+                }
+              }
+            ]
+          })
+        }}
+      />
       {/* ── Notice Bar ──────────────────────────────────────────────── */}
       <div className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white text-center py-2.5 text-sm font-medium tracking-wide">
         <span className="opacity-90">

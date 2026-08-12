@@ -10,6 +10,60 @@ export default function ClientPage() {
 
   return (
         <div className="max-w-4xl mx-auto px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "暗黑三角测试",
+            "description": "免费暗黑三角测试，15题测出你的暗黑人格特质。",
+            "url": "https://sbtibee.com/dark-triad",
+            "about": { "@type": "Thing", "name": "Dark Triad Personality Traits" }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "暗黑三角是什么？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "暗黑三角是心理学中描述3种负面人格特质的组合：自恋、马基雅维利主义和精神病态。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测出暗黑特质代表我是坏人吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "不一定。每个人都有不同程度的暗黑特质，重要的是觉察而非评判。本测试仅用于自我了解。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "测试免费吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全免费，无需注册，15题约5分钟，附专业解读。"
+                  }
+                }
+            ]
+          })
+        }}
+      />
+
+      
+      
+
+      
+
       <div className="pt-12 pb-4 text-center">
         <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
           {isZh ? "暗黑三角·光明三角" : "Dark Triad · Light Triad"}

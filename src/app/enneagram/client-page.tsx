@@ -10,6 +10,68 @@ export default function ClientPage() {
 
   return (
         <div className="max-w-4xl mx-auto px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Quiz",
+            "name": "九型人格测试",
+            "description": "免费九型人格在线测试，18题测出你的9型性格类型。",
+            "url": "https://sbtibee.com/enneagram",
+            "about": { "@type": "Thing", "name": "Enneagram Personality Types" }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "九型人格测试准吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "九型人格是描述9种基本人格类型的系统，每种类型围绕核心恐惧与渴望展开。它提供自我认知框架，测试结果仅供参考。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "九型人格测试免费吗？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "蜂巢测试的九型人格测试完全免费，无需注册，18题约5-8分钟，测完即出结果。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "九型人格有多少种类型？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "九型人格共有9种基本类型，每种类型还有侧翼（Wing）和压力/放松状态下的动态流动。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "九型人格和MBTI有什么区别？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "MBTI描述认知偏好（脑回路），九型人格描述情感动机（内心驱动）。两者结合可获得更立体的自我认知。"
+                  }
+                }
+            ]
+          })
+        }}
+      />
+
+      
+      
+
+      
+
       <div className="pt-12 pb-4 text-center">
         <h1 className="text-2xl font-black text-gray-900 dark:text-gray-100">
           {isZh ? "九型人格测试" : "Enneagram Test"}
