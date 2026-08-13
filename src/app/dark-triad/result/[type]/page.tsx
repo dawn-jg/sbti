@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.name + " - " + "暗黑三角·光明三角",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/dark-triad/result/${type}`,
+    },
   };
 }
 

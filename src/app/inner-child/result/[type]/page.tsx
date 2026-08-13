@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.name + " - " + "内在小孩",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/inner-child/result/${type}`,
+    },
   };
 }
 

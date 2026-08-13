@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.name + " - " + "SBTI人格",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/sbti/result/${type}`,
+    },
   };
 }
 

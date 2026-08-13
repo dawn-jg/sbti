@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.name + " - " + "宠物SBTI",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/pet-sbti/result/${type}`,
+    },
   };
 }
 

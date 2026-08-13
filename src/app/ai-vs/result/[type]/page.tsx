@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.label + " - " + "AI对决",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/ai-vs/result/${type}`,
+    },
   };
 }
 

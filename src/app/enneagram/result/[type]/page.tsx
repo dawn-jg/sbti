@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.name + " - " + "九型人格",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/enneagram/result/${type}`,
+    },
   };
 }
 

@@ -9,6 +9,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: str
   return {
     title: t.name + " - " + "爱的五种语言",
     description: t.description || "",
+    alternates: {
+      canonical: `https://sbtibee.com/love-language/result/${type}`,
+    },
   };
 }
 
