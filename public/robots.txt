@@ -29,9 +29,15 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 # All other crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://sbtibee.com/sitemap.xml
+Sitemap: https://sbtibee.com/sitemap-index.xml

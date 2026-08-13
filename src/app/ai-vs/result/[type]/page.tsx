@@ -2,11 +2,12 @@ import { aiVsResultRanges } from "@/data/ai-vs";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = aiVsResultRanges.find((x: any) => x.label === params.type);
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = aiVsResultRanges.find((x: any) => x.label === type);
   if (!t) return { title: "AI对决" };
   return {
-    title: t.label + " - " + "AI对决 | 蜂巢测试",
+    title: t.label + " - " + "AI对决",
     description: t.description || "",
   };
 }

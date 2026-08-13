@@ -2,11 +2,12 @@ import { enneagramTypes } from "@/data/enneagram";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = enneagramTypes[params.type];
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = enneagramTypes[type];
   if (!t) return { title: "九型人格" };
   return {
-    title: t.name + " - " + "九型人格 | 蜂巢测试",
+    title: t.name + " - " + "九型人格",
     description: t.description || "",
   };
 }

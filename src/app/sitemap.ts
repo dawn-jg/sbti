@@ -8,6 +8,7 @@ import { attachmentTypes } from "@/data/attachment";
 import { innerChildTypes } from "@/data/inner-child";
 import { darkTriadTypes } from "@/data/dark-triad";
 import { auraTypes } from "@/data/aura";
+import { aiVsResultRanges } from "@/data/ai-vs";
 import { blogPosts } from "@/data/blog";
 
 const BASE = "https://sbtibee.com";
@@ -23,7 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Test index pages
     { url: `${BASE}/mbti`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/mbti/test`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/mbti/test-standard`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/mbti/test-advanced`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/mbti/test-deep`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/sbti`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/sbti/test`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/enneagram`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/pet-sbti`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/love-language`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
@@ -88,6 +93,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Aura: 7 types
   auraTypes.forEach((_, i) => {
     entries.push({ url: `${BASE}/aura/result/${i}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 });
+  });
+
+  // AI-vs: 5 score ranges (URL uses Chinese label)
+  aiVsResultRanges.forEach((t) => {
+    entries.push({ url: `${BASE}/ai-vs/result/${encodeURIComponent(t.label)}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 });
   });
 
   // Blog posts (weekly updated)

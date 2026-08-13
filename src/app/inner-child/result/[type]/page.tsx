@@ -2,11 +2,12 @@ import { innerChildTypes } from "@/data/inner-child";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = innerChildTypes[params.type as keyof typeof innerChildTypes];
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = innerChildTypes[type as keyof typeof innerChildTypes];
   if (!t) return { title: "内在小孩" };
   return {
-    title: t.name + " - " + "内在小孩 | 蜂巢测试",
+    title: t.name + " - " + "内在小孩",
     description: t.description || "",
   };
 }

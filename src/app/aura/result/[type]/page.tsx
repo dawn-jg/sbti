@@ -2,11 +2,12 @@ import { auraTypes } from "@/data/aura";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = auraTypes.find((x: any) => x.code === params.type);
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = auraTypes.find((x: any) => x.code === type);
   if (!t) return { title: "气场颜色" };
   return {
-    title: t.name + " - " + "气场颜色 | 蜂巢测试",
+    title: t.name + " - " + "气场颜色",
     description: t.description || "",
   };
 }

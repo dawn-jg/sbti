@@ -2,11 +2,12 @@ import { sbtiTypes } from "@/data/sbti";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = sbtiTypes.find((x: any) => x.code === params.type);
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = sbtiTypes.find((x: any) => x.code === type);
   if (!t) return { title: "SBTI人格" };
   return {
-    title: t.name + " - " + "SBTI人格 | 蜂巢测试",
+    title: t.name + " - " + "SBTI人格",
     description: t.description || "",
   };
 }

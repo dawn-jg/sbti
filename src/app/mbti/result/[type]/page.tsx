@@ -2,11 +2,12 @@ import { mbtiTypes } from "@/data/mbti";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = mbtiTypes[params.type];
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = mbtiTypes[type];
   if (!t) return { title: "MBTI十六型人格" };
   return {
-    title: t.name + " - " + "MBTI十六型人格 | 蜂巢测试",
+    title: t.name + " - " + "MBTI十六型人格",
     description: t.description || "",
   };
 }

@@ -2,11 +2,12 @@ import { petSbtiTypes } from "@/data/pet-sbti";
 import ClientPage from "./client-page";
 import { Metadata } from "next";
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const t = petSbtiTypes.find((x: any) => x.code === params.type);
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type } = await params;
+  const t = petSbtiTypes.find((x: any) => x.code === type);
   if (!t) return { title: "宠物SBTI" };
   return {
-    title: t.name + " - " + "宠物SBTI | 蜂巢测试",
+    title: t.name + " - " + "宠物SBTI",
     description: t.description || "",
   };
 }
