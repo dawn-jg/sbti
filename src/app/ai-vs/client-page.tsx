@@ -2,6 +2,7 @@
 import { aiVsQuestions, aiVsResultRanges, calculateAIVs } from "@/data/ai-vs";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -88,6 +89,12 @@ export default function ClientPage() {
           return range.label;
         }}
         resultPath="/ai-vs/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 8 题，约 2 分钟完成。测出你的思维风格更接近纯人类思维还是 AI 思维，附 0-100 评分与解读。"
+        introEn="This 8-question test takes about 2 minutes. See whether your thinking is more human-like or AI-like, with a 0-100 score and interpretation."
+        theory="AI 对决测试对比人类思维与 AI 思维的差异，题目围绕直觉与数据、情感与逻辑等决策风格设计，属于趣味性自我认知工具。"
+        theoryEn="The AI-vs-Human test contrasts human and AI thinking styles, with questions on intuition vs data and emotion vs logic. A playful self-awareness tool."
       />
     <SeoContentSection test="ai-vs" />
     </div>

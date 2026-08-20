@@ -2,6 +2,7 @@
 import { enneagramQuestions, calculateEnneagram } from "@/data/enneagram";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog";
@@ -93,6 +94,12 @@ export default function ClientPage() {
         questions={enneagramQuestions}
         onCalculate={calculateEnneagram}
         resultPath="/enneagram/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 18 题，约 3 分钟完成。测出你的九型人格主型（1-9 号），附核心动机、压力反应与成长方向解读。"
+        introEn="This 18-question test takes about 3 minutes. Identify your Enneagram type (1-9), with core motivations, stress responses, and growth directions."
+        theory="九型人格（Enneagram）源于古老的九芒星符号，现代版本由 Oscar Ichazo、Claudio Naranjo、Don Riso 与 Russ Hudson 等学者发展，围绕 9 种核心恐惧与渴望建立。"
+        theoryEn="The Enneagram originated from the ancient nine-pointed symbol and was modernized by scholars including Oscar Ichazo, Claudio Naranjo, Don Riso and Russ Hudson, centered on 9 core fears and desires."
       />
         {/* ── Type Deep-Dive Articles (topic cluster) ─────────────────── */}
     <section className="max-w-4xl mx-auto px-4 py-12">

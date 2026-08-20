@@ -3,6 +3,7 @@
 import { mbtiStandardQuestions, calculateMBTI } from "@/data/mbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import Link from "next/link";
 
 export default function MBTITestStandardPage() {
@@ -37,6 +38,12 @@ export default function MBTITestStandardPage() {
         questions={mbtiStandardQuestions}
         onCalculate={(answers) => calculateMBTI(answers, mbtiStandardQuestions)}
         resultPath="/mbti/result"
+      />
+      <TestDisclaimer
+        intro="本测评共 93 题，约 15 分钟完成。相比速测版题目更全面，能更精准地确定你的四维偏好强度，测出 16 型人格之一并附完整解读。"
+        introEn="This 93-question standard assessment takes about 15 minutes. More comprehensive than the quick version, it pinpoints your preferences across four dimensions to identify your 16-type personality."
+        theory="MBTI 标准测评基于荣格心理类型理论与 MBTI 官方框架的维度结构，参考 16personalities 的公开维度划分设计。"
+        theoryEn="The MBTI Standard Test follows Jung's psychological types and the dimension structure of the official MBTI framework."
       />
     </div>
   );

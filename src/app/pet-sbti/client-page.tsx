@@ -2,6 +2,7 @@
 import { petSbtiQuestions, petSbtiTypes, calculatePetSBTI } from "@/data/pet-sbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -83,6 +84,12 @@ export default function ClientPage() {
         questions={petSbtiQuestions}
         onCalculate={(answers) => petSbtiTypes[calculatePetSBTI(answers)]?.code ?? "CAT"}
         resultPath="/pet-sbti/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 8 题，约 2 分钟完成。为你的宠物测出 12 种动物人格之一（如猫系、狗系等），附对应性格描述与相处建议。"
+        introEn="This 8-question test takes about 2 minutes. Find out which of 12 animal personalities your pet has, with descriptions and care tips."
+        theory="宠物 SBTI 将大五人格的特质维度应用到宠物身上，帮助宠物主人了解自家毛孩子的性格倾向，属于趣味性人格分类工具。"
+        theoryEn="Pet SBTI applies Big Five trait dimensions to pets, helping owners understand their furry friends' personality tendencies. A playful classification tool."
       />
     <SeoContentSection test="pet-sbti" />
     </div>

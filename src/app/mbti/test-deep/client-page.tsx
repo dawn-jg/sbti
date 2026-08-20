@@ -3,6 +3,7 @@
 import { mbtiDeepQuestions, calculateMBTI } from "@/data/mbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 
 export default function MBTITestDeepPage() {
   const { lang } = useSite();
@@ -36,6 +37,12 @@ export default function MBTITestDeepPage() {
         questions={mbtiDeepQuestions}
         onCalculate={(answers) => calculateMBTI(answers, mbtiDeepQuestions)}
         resultPath="/mbti/result"
+      />
+      <TestDisclaimer
+        intro="本测评共 200 题，约 35 分钟完成。适合希望获得最完整人格画像的用户，测出 16 型人格并附详细的功能栈分析与解读。"
+        introEn="This 200-question complete assessment takes about 35 minutes, ideal for users who want the fullest personality profile, including a detailed function stack analysis."
+        theory="MBTI 深度测评全面测量荣格认知功能栈与各维度偏好强度，参考 MBTI 完整测评的题目结构设计，是本站最完整的 MBTI 工具。"
+        theoryEn="The MBTI Deep Test comprehensively measures the Jungian function stack and preference strength, modeled on the full MBTI assessment structure."
       />
     </div>
   );

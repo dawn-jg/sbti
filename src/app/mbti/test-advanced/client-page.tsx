@@ -3,6 +3,7 @@
 import { mbtiAdvancedQuestions, calculateMBTI } from "@/data/mbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 
 export default function MBTITestAdvancedPage() {
   const { lang } = useSite();
@@ -36,6 +37,12 @@ export default function MBTITestAdvancedPage() {
         questions={mbtiAdvancedQuestions}
         onCalculate={(answers) => calculateMBTI(answers, mbtiAdvancedQuestions)}
         resultPath="/mbti/result"
+      />
+      <TestDisclaimer
+        intro="本测评共 144 题，约 25 分钟完成。除了类型结果，还分析你的主导功能与辅助功能，帮助你理解「为什么我是这个类型」。"
+        introEn="This 144-question deep assessment takes about 25 minutes. Beyond your type, it analyzes your dominant and auxiliary functions to explain why you are this type."
+        theory="MBTI 进阶测评深入测量荣格认知功能（Ni/Ne/Si/Se/Ti/Te/Fi/Fe）的偏好顺序，理论基础为荣格《心理类型》与 Myers-Briggs 功能栈模型。"
+        theoryEn="The MBTI Advanced Test measures the order of Jungian cognitive functions (Ni/Ne/Si/Se/Ti/Te/Fi/Fe), based on Jung's Psychological Types and the Myers-Briggs function stack."
       />
     </div>
   );

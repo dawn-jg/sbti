@@ -2,6 +2,7 @@
 import { sbtiQuestions, calculateSBTI } from "@/data/sbti";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 
 export default function SbtiTestPage() {
   const { lang } = useSite();
@@ -28,6 +29,12 @@ export default function SbtiTestPage() {
         questions={sbtiQuestions}
         onCalculate={calculateSBTI}
         resultPath="/sbti/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 30 题，约 5 分钟完成。测出你属于 27 种互联网人格中的哪一种（吗喽、卷王、Dior-s……），附完整的性格解读与「同类」推荐。"
+        introEn="This 30-question test takes about 5 minutes. Find out which of 27 internet personalities you are, with full descriptions and similar-type recommendations."
+        theory="SBTI 是结合互联网文化的人格分类体系，参考了大五人格（Big Five）中的外向性、开放性、宜人性等特质维度，但以更轻松、更「抽象」的方式呈现 27 种互联网人格。"
+        theoryEn="SBTI is an internet-culture personality system that references Big Five trait dimensions (extraversion, openness, agreeableness) but presents 27 playful internet personalities in a more casual way."
       />
     </div>
   );

@@ -2,6 +2,7 @@
 import { loveLanguageQuestions, calculateLoveLanguage } from "@/data/love-language";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -83,6 +84,12 @@ export default function ClientPage() {
         questions={loveLanguageQuestions}
         onCalculate={calculateLoveLanguage}
         resultPath="/love-language/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 15 题，约 3 分钟完成。测出你的主要爱的语言（肯定的话语、优质时间、接受礼物、服务的行动、身体接触），附关系沟通建议。"
+        introEn="This 15-question test takes about 3 minutes. Identify your primary love language (words of affirmation, quality time, gifts, acts of service, physical touch) with relationship tips."
+        theory="爱的五种语言测试基于 Gary Chapman 的畅销书《爱的五种语言》（The 5 Love Languages），框架描述人们表达和接收爱的五种不同方式。"
+        theoryEn="The 5 Love Languages test is based on Gary Chapman's bestselling book The 5 Love Languages, describing five ways people give and receive love."
       />
     <SeoContentSection test="love-language" />
     </div>

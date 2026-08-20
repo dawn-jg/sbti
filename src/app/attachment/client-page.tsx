@@ -2,6 +2,7 @@
 import { attachmentQuestions, calculateAttachment } from "@/data/attachment";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -83,6 +84,12 @@ export default function ClientPage() {
         questions={attachmentQuestions}
         onCalculate={calculateAttachment}
         resultPath="/attachment/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 12 题，约 3 分钟完成。测出你的依恋风格（安全型、焦虑型、回避型、恐惧型），附亲密关系中的行为模式与改善建议。"
+        introEn="This 12-question test takes about 3 minutes. Identify your attachment style (secure, anxious, avoidant, fearful) with relationship patterns and improvement tips."
+        theory="依恋风格测试基于约翰·鲍尔比（John Bowlby）的依恋理论与玛丽·安斯沃思（Mary Ainsworth）的陌生情境实验，参考成人依恋量表（ECR）的维度划分设计。"
+        theoryEn="The attachment style test is based on John Bowlby's attachment theory and Mary Ainsworth's Strange Situation experiment, referencing the ECR adult attachment scale dimensions."
       />
     <SeoContentSection test="attachment" />
     </div>

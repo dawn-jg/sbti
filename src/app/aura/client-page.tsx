@@ -2,6 +2,7 @@
 import { auraQuestions, auraTypes, calculateAura } from "@/data/aura";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -83,6 +84,12 @@ export default function ClientPage() {
         questions={auraQuestions}
         onCalculate={(answers) => auraTypes[calculateAura(answers)]?.code ?? "RED"}
         resultPath="/aura/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 8 题，约 2 分钟完成。测出你的气场颜色（7 种之一），附对应的性格特质与搭配建议。"
+        introEn="This 8-question test takes about 2 minutes. Discover your aura color (one of 7) with personality traits and styling tips."
+        theory="气场颜色测试参考了色彩心理学与能量气质分类，用颜色隐喻你的内在气质与给人留下的第一印象，属于趣味性人格工具。"
+        theoryEn="The Aura Color test references color psychology and energy-temperament classification, using colors as metaphors for your inner temperament. A playful personality tool."
       />
     <SeoContentSection test="aura" />
     </div>

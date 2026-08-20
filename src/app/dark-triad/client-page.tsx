@@ -2,6 +2,7 @@
 import { darkTriadQuestions, darkTriadTypes, calculateDarkTriad } from "@/data/dark-triad";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -83,6 +84,12 @@ export default function ClientPage() {
         questions={darkTriadQuestions}
         onCalculate={(answers) => darkTriadTypes[calculateDarkTriad(answers)]?.code ?? "FAITH"}
         resultPath="/dark-triad/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 12 题，约 2 分钟完成。测出你在三个暗黑人格维度上的倾向程度。本测试仅用于自我探索与娱乐，不代表临床人格评估。"
+        introEn="This 12-question test takes about 2 minutes. Measure your tendency across three dark personality dimensions. For self-exploration and entertainment only, not clinical assessment."
+        theory="暗黑三角测试基于 Paulhus & Williams（2002）提出的暗黑人格三特质研究：自恋（Narcissism）、马基雅维利主义（Machiavellianism）、精神病态（Psychopathy）。"
+        theoryEn="The Dark Triad test is based on Paulhus & Williams (2002) research on narcissism, Machiavellianism, and psychopathy."
       />
     <SeoContentSection test="dark-triad" />
     </div>

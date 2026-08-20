@@ -2,6 +2,7 @@
 import { innerChildQuestions, innerChildTypes, calculateInnerChild } from "@/data/inner-child";
 import QuestionFlow from "@/components/QuestionFlow";
 import { useSite } from "@/lib/site-context";
+import TestDisclaimer from "@/components/TestDisclaimer";
 import SeoContentSection from "@/components/SeoContentSection";
 
 export default function ClientPage() {
@@ -83,6 +84,12 @@ export default function ClientPage() {
         questions={innerChildQuestions}
         onCalculate={(answers) => { const typeKeys = Object.keys(innerChildTypes); return typeKeys[calculateInnerChild(answers)] ?? "WOUNDED"; }}
         resultPath="/inner-child/result"
+      />
+      <TestDisclaimer
+        intro="本测试共 10 题，约 2 分钟完成。测出你的内在小孩类型（如被忽视的小孩、完美主义的小孩等），附疗愈方向与自我关怀建议。"
+        introEn="This 10-question test takes about 2 minutes. Identify your inner child archetype with healing directions and self-care suggestions."
+        theory="内在小孩测试借鉴了荣格心理学的内在小孩概念以及心理学中常见的童年创伤与需求理论，用于探索你内心未被满足的情感需求。"
+        theoryEn="The Inner Child test draws on Jungian psychology's inner child concept and common childhood needs theories to explore unmet emotional needs."
       />
     <SeoContentSection test="inner-child" />
     </div>
